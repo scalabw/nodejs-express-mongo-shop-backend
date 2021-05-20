@@ -1,4 +1,18 @@
 const express = require('express')
+const mongoose = require('mongoose')
+
+require('dotenv').config()
+
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.6krpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+  )
+  .then(() => console.log('Connection to MongoDB Successful !'))
+  .catch(() => console.log('Connection to MongoDB Failure !'))
 
 const app = express()
 
